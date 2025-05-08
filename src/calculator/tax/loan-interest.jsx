@@ -1,18 +1,18 @@
 import React, { useState } from 'react'
 
-export default function LateFeeCalculator() {
-  const [amount, setAmount] = useState('')
-  const [percent, setPercent] = useState('')
+export default function LoanInterestCalculator() {
+  const [sum, setSum] = useState('')
+  const [rate, setRate] = useState('')
   const [days, setDays] = useState('')
-  const [result, setResult] = useState(null)
+  const [interest, setInterest] = useState(null)
 
   const calculate = () => {
-    const a = parseFloat(amount)
-    const p = parseFloat(percent) / 100
+    const s = parseFloat(sum)
+    const r = parseFloat(rate) / 100 / 365
     const d = parseFloat(days)
-    if (!a || !p || !d) return
-    const res = a * p * d
-    setResult(res.toFixed(2))
+    if (!s || !r || !d) return
+    const result = s * r * d
+    setInterest(result.toFixed(2))
   }
 
   return (
@@ -20,27 +20,27 @@ export default function LateFeeCalculator() {
       <nav className="breadcrumbs">
         <a href="/">Главная</a>
         <a href="/category/tax">Бухгалтерия и налоги</a>
-        <span>Неустойка</span>
+        <span>Проценты по займу</span>
       </nav>
 
-      <h1>Калькулятор неустойки</h1>
+      <h1>Калькулятор процентов по займу</h1>
 
       <div className="calculator-layout">
         <section className="calculator-form">
           <div className="field">
-            <label>Сумма обязательства (₽)</label>
-            <input type="number" value={amount} onChange={e => setAmount(e.target.value)} />
+            <label>Сумма займа (₽)</label>
+            <input type="number" value={sum} onChange={e => setSum(e.target.value)} />
           </div>
           <div className="field">
-            <label>Процент неустойки в день (%)</label>
-            <input type="number" value={percent} onChange={e => setPercent(e.target.value)} />
+            <label>Ставка (% годовых)</label>
+            <input type="number" value={rate} onChange={e => setRate(e.target.value)} />
           </div>
           <div className="field">
-            <label>Срок просрочки (дней)</label>
+            <label>Срок (дней)</label>
             <input type="number" value={days} onChange={e => setDays(e.target.value)} />
           </div>
           <button className="btn-calc" onClick={calculate}>РАССЧИТАТЬ</button>
-          {result && <div className="result">Сумма неустойки: <strong>{result} ₽</strong></div>}
+          {interest !== null && <div className="result">Сумма процентов: <strong>{interest} ₽</strong></div>}
         </section>
         <aside className="calculator-ads">
           <div className="ad-placeholder">Реклама 1</div>

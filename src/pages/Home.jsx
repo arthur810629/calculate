@@ -1,62 +1,63 @@
-// src/pages/Home.jsx
-
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { FaUniversity, FaPiggyBank, FaCalculator, FaCar } from 'react-icons/fa'
+import { useTranslation } from 'react-i18next'
 import './Home.css'
 
 export default function Home() {
+  const { t } = useTranslation()
+
   const categories = [
     {
       id: 'finance',
-      title: 'Финансовые калькуляторы',
+      title: t('finance_title'),
       icon: <FaUniversity size={20} />,
       items: [
-        { id: 'credit',       title: 'Кредитный калькулятор' },
-        { id: 'mortgage',     title: 'Ипотечный калькулятор' },
-        { id: 'prepayment',   title: 'Кредитный калькулятор с досрочным погашением' },
-        { id: 'refinance',    title: 'Калькулятор рефинансирования' },
-        { id: 'microloan',    title: 'Калькулятор микрозаймов' },
-        { id: 'inflation',    title: 'Калькулятор инфляции' },
+        { id: 'credit', title: t('credit_calc') },
+        { id: 'mortgage', title: t('mortgage_calc') },
+        { id: 'prepayment', title: t('prepayment_calc') },
+        { id: 'refinance', title: t('refinance_calc') },
+        { id: 'microloan', title: t('microloan_calc') },
+        { id: 'inflation', title: t('inflation_calc') },
       ],
     },
     {
       id: 'invest',
-      title: 'Калькуляторы для инвестиций',
+      title: t('invest_title'),
       icon: <FaPiggyBank size={20} />,
       items: [
-        { id: 'deposit',     title: 'Калькулятор вкладов' },
-        { id: 'investment',  title: 'Калькулятор инвестиций' },
-        { id: 'bonds',       title: 'Калькулятор доходности облигаций' },
+        { id: 'deposit', title: t('deposit_calc') },
+        { id: 'investment', title: t('investment_calc') },
+        { id: 'bonds', title: t('bonds_calc') },
       ],
     },
     {
       id: 'tax',
-      title: 'Бухгалтерия и налоги',
+      title: t('tax_title'),
       icon: <FaCalculator size={20} />,
       items: [
-        { id: 'vat',              title: 'Калькулятор НДС' },
-        { id: 'pit',              title: 'Калькулятор НДФЛ' },
-        { id: 'penalties',        title: 'Калькулятор пеней' },
-        { id: 'property-deduction', title: 'Калькулятор имущественного вычета' },
-        { id: 'sale-tax',         title: 'Калькулятор налога с продажи квартиры' },
-        { id: 'loan-interest',    title: 'Калькулятор процентов по займу' },
-        { id: 'gk395',            title: 'Калькулятор процентов по статье 395 ГК РФ' },
-        { id: 'late-fee',         title: 'Калькулятор неустойки' },
-        { id: 'amount-words',     title: 'Сумма прописью' },
-        { id: 'work-experience',  title: 'Калькулятор стажа' },
+        { id: 'vat', title: t('vat_calc') },
+        { id: 'pit', title: t('pit_calc') },
+        { id: 'penalties', title: t('penalties_calc') },
+        { id: 'property-deduction', title: t('property_deduction_calc') },
+        { id: 'sale-tax', title: t('sale_tax_calc') },
+        { id: 'loan-interest', title: t('loan_interest_calc') },
+        { id: 'gk395', title: t('gk395_calc') },
+        { id: 'late-fee', title: t('late_fee_calc') },
+        { id: 'amount-words', title: t('amount_words_calc') },
+        { id: 'work-experience', title: t('work_experience_calc') },
       ],
     },
     {
       id: 'auto',
-      title: 'Автомобильные калькуляторы',
+      title: t('auto_title'),
       icon: <FaCar size={20} />,
       items: [
-        { id: 'osago',           title: 'Калькулятор ОСАГО' },
-        { id: 'vehicle-tax',     title: 'Калькулятор транспортного налога' },
-        { id: 'credit',          title: 'Калькулятор автокредита' },
-        { id: 'customs',         title: 'Калькулятор растаможки автомобилей' },
-        { id: 'fuel-consumption', title: 'Калькулятор расхода топлива' },
+        { id: 'osago', title: t('osago_calc') },
+        { id: 'vehicle-tax', title: t('vehicle_tax_calc') },
+        { id: 'credit', title: t('autocredit_calc') },
+        { id: 'customs', title: t('customs_calc') },
+        { id: 'fuel-consumption', title: t('fuel_calc') },
       ],
     },
   ]

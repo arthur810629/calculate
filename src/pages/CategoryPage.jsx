@@ -1,7 +1,7 @@
 import React from 'react'
 import { useParams, Link } from 'react-router-dom'
 
-// Карта всех наших калькуляторов по категориям
+// Карта всех калькуляторов по категориям
 const CALCULATORS = {
   finance: [
     { id: 'credit', title: 'Кредитный калькулятор' },
@@ -11,14 +11,36 @@ const CALCULATORS = {
     { id: 'microloan', title: 'Калькулятор микрозаймов' },
     { id: 'inflation', title: 'Калькулятор инфляции' },
   ],
-  // туда же можно добавить другие категории: invest, tax, auto…
+  invest: [
+    { id: 'deposit', title: 'Калькулятор вкладов' },
+    { id: 'investment', title: 'Калькулятор инвестиций' },
+    { id: 'bonds', title: 'Калькулятор доходности облигаций' },
+  ],
+  tax: [
+    { id: 'vat', title: 'Калькулятор НДС' },
+    { id: 'pit', title: 'Калькулятор НДФЛ' },
+    { id: 'penalties', title: 'Калькулятор пеней' },
+    { id: 'property-deduction', title: 'Калькулятор имущественного вычета' },
+    { id: 'sale-tax', title: 'Калькулятор налога с продажи квартиры' },
+    { id: 'loan-interest', title: 'Калькулятор процентов по займу' },
+    { id: 'gk395', title: 'Калькулятор процентов по статье 395 ГК РФ' },
+    { id: 'late-fee', title: 'Калькулятор неустойки' },
+    { id: 'amount-words', title: 'Сумма прописью' },
+    { id: 'work-experience', title: 'Калькулятор стажа' },
+  ],
+  auto: [
+    { id: 'osago', title: 'Калькулятор ОСАГО' },
+    { id: 'vehicle-tax', title: 'Калькулятор транспортного налога' },
+    { id: 'credit', title: 'Калькулятор автокредита' },
+    { id: 'customs', title: 'Калькулятор растаможки автомобилей' },
+    { id: 'fuel-consumption', title: 'Калькулятор расхода топлива' },
+  ],
 }
 
 export default function CategoryPage() {
   const { categoryId } = useParams()
   const items = CALCULATORS[categoryId] || []
 
-  // Если категория не найдена — показываем 404
   if (!items.length) {
     return (
       <div className="calculator-page container">
@@ -27,26 +49,23 @@ export default function CategoryPage() {
     )
   }
 
-  // Название категории на русском
   const titles = {
     finance: 'Финансовые калькуляторы',
-    // invest: 'Калькуляторы для инвестиций', и т.д.
+    invest: 'Калькуляторы для инвестиций',
+    tax: 'Бухгалтерия и налоги',
+    auto: 'Автомобильные калькуляторы',
   }
 
   return (
     <div className="calculator-page container">
-      {/* Хлебные крошки */}
       <nav className="breadcrumbs">
         <a href="/">Главная</a> ›
         <span> {titles[categoryId]}</span>
       </nav>
 
-      {/* Заголовок */}
       <h1>{titles[categoryId]}</h1>
 
-      {/* Основной контент: каталог + реклама */}
       <div className="calculator-layout">
-        {/* Сетка кнопок-карточек */}
         <section className="calculator-form">
           <div className="category-grid">
             {items.map(({ id, title }) => (
@@ -61,14 +80,12 @@ export default function CategoryPage() {
           </div>
         </section>
 
-        {/* Реклама справа */}
         <aside className="calculator-ads">
           <div className="ad-placeholder">Реклама</div>
           <div className="ad-placeholder">Реклама</div>
         </aside>
       </div>
 
-      {/* Реклама внизу */}
       <div className="bottom-ads">
         <div className="ad-placeholder">Реклама внизу страницы</div>
       </div>

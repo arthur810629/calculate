@@ -3,20 +3,16 @@
 import React, { Suspense, lazy } from 'react'
 import { useParams } from 'react-router-dom'
 
-// сканируем ВСЕ .jsx внутри src/calculator
+// Сканируем ВСЕ .jsx внутри src/calculator
 const modules = import.meta.glob('../calculator/**/*.jsx')
-
-// на старте можно посмотреть, что найдено
-console.log('Available calculator modules:', Object.keys(modules))
 
 export default function CalculatorPage() {
   const { categoryId, calculatorId } = useParams()
 
-  // формируем именно такой путь, как в Object.keys(modules)
+  // Формируем путь до нужного калькулятора
   const modulePath = `../calculator/${categoryId}/${calculatorId}.jsx`
-  console.log('Looking for modulePath:', modulePath)
-
   const importer = modules[modulePath]
+
   if (!importer) {
     return (
       <div className="container">
@@ -26,11 +22,12 @@ export default function CalculatorPage() {
     )
   }
 
+  // Загружаем компонент лениво
   const Calculator = lazy(importer)
 
   return (
     <Suspense fallback={<div className="container"><p>Загрузка…</p></div>}>
-      <Calculator />
+      <Calculator /> {/* ✅ ВАЖНО: используем как JSX-компонент */}
     </Suspense>
   )
 }

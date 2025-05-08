@@ -1,16 +1,15 @@
 import React, { useState } from 'react'
 
-export default function VatCalculator() {
-  const [amount, setAmount] = useState('')
-  const [rate, setRate] = useState('20')
-  const [vat, setVat] = useState(null)
+export default function PropertyDeductionCalculator() {
+  const [cost, setCost] = useState('')
+  const [tax, setTax] = useState(null)
 
   const calculate = () => {
-    const sum = parseFloat(amount)
-    const r = parseFloat(rate)
-    if (!sum || !r) return
-    const vatAmount = sum * r / (100 + r)
-    setVat(vatAmount.toFixed(2))
+    const c = parseFloat(cost)
+    if (!c) return
+    const maxDeduction = Math.min(c, 2000000)
+    const result = maxDeduction * 0.13
+    setTax(result.toFixed(2))
   }
 
   return (
@@ -18,23 +17,19 @@ export default function VatCalculator() {
       <nav className="breadcrumbs">
         <a href="/">Главная</a>
         <a href="/category/tax">Бухгалтерия и налоги</a>
-        <span>НДС</span>
+        <span>Имущественный вычет</span>
       </nav>
 
-      <h1>Калькулятор НДС</h1>
+      <h1>Калькулятор имущественного вычета</h1>
 
       <div className="calculator-layout">
         <section className="calculator-form">
           <div className="field">
-            <label>Сумма с НДС (₽)</label>
-            <input type="number" value={amount} onChange={e => setAmount(e.target.value)} />
-          </div>
-          <div className="field">
-            <label>Ставка НДС (%)</label>
-            <input type="number" value={rate} onChange={e => setRate(e.target.value)} />
+            <label>Стоимость недвижимости (₽)</label>
+            <input type="number" value={cost} onChange={e => setCost(e.target.value)} />
           </div>
           <button className="btn-calc" onClick={calculate}>РАССЧИТАТЬ</button>
-          {vat !== null && <div className="result">Сумма НДС: <strong>{vat} ₽</strong></div>}
+          {tax && <div className="result">Максимальный вычет: <strong>{tax} ₽</strong></div>}
         </section>
         <aside className="calculator-ads">
           <div className="ad-placeholder">Реклама 1</div>
