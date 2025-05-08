@@ -1,81 +1,119 @@
-/* src/components/Header.css */
-
-/* контейнер и базовые стили… */
-.site-header { position: sticky; top:0; background:#007acc; z-index:1000; }
-.header-inner { display:flex; align-items:center; justify-content:space-between; padding:0.75rem 1rem; }
-.logo a { color:#fff; font-size:1.25rem; text-decoration:none; }
-.site-nav { display:flex; gap:1rem; position:relative; }
-.nav-link, .btn-mega-toggle {
-  color:#fff; background:none; border:none; font:inherit; cursor:pointer; text-decoration:none; padding:0.5rem;
+.site-header {
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  border-bottom: 1px solid #e0e0e0;
+  z-index: 1000;
 }
-.nav-link:hover, .btn-mega-toggle:hover { text-decoration:underline; }
 
-/* Контейнер мегаменю: скрыт по умолчанию */
-.mega-parent { position:relative; }
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+}
+
+.logo a {
+  color: #333;
+  font-size: 1.25rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.site-nav {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.nav-link.btn-mega-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  background: none;
+  border: none;
+  font: inherit;
+  color: #333;
+  cursor: pointer;
+  padding: 0.5rem;
+  font-weight: 500;
+}
+
+.nav-link.btn-mega-toggle:hover,
+.nav-link.btn-mega-toggle:focus {
+  background-color: #f5f5f5;
+  border-radius: 4px;
+}
+
+.mega-parent {
+  position: relative;
+}
+
+/* Важное: приклеиваем правый край мегаменю к правой границе кнопки */
 .mega-menu {
-  position:absolute;
-  top:100%;
-  left:0;
-  width: 800px;             /* ширина мегаменю */
-  background:#fff;
-  display:flex;
-  padding:1rem;
-  box-shadow:0 4px 8px rgba(0,0,0,0.1);
-  visibility:hidden;
-  opacity:0;
+  position: absolute;
+  top: 100%;
+  right: 0;      /* вместо left:0 */
+  width: 760px;
+  background: #fff;
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  visibility: hidden;
+  opacity: 0;
   transform: translateY(10px);
   transition: all 0.2s ease;
-  pointer-events:none;
-  z-index:1000;
+  pointer-events: none;
+  border-radius: 4px;
 }
+
 .mega-menu.open {
-  visibility:visible;
-  opacity:1;
+  visibility: visible;
+  opacity: 1;
   transform: translateY(0);
-  pointer-events:auto;
+  pointer-events: auto;
 }
 
-/* Колонка внутри мегаменю */
 .mega-section {
-  flex:1;
-  display:flex;
-  flex-direction:column;
-  gap:0.5rem;
-}
-.mega-section h4 {
-  font-size:1rem;
-  margin-bottom:0.5rem;
-  display:flex;
-  align-items:center;
-  gap:0.5rem;
-  color:#333;
-}
-.mega-link {
-  color:#007acc;
-  text-decoration:none;
-  padding:0.25rem 0;
-}
-.mega-link:hover {
-  text-decoration:underline;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
-/* Мобильная адаптация: мегаменю превращается в аккордеон */
+.mega-section h4 {
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+  color: #555;
+  text-transform: uppercase;
+}
+
+.mega-link {
+  font-size: 0.875rem;
+  color: #007bff;
+  text-decoration: none;
+  padding: 0.25rem 0;
+}
+
+.mega-link:hover {
+  text-decoration: underline;
+}
+
+/* Адаптив */
 @media(max-width: 900px) {
   .mega-menu {
     position: static;
     width: auto;
-    flex-direction:column;
-    transform:none;
-    box-shadow:none;
-    visibility:visible;
-    opacity:1;
-    pointer-events:auto;
-    display:none;
+    flex-direction: column;
+    box-shadow: none;
+    transform: none;
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+    display: none;
   }
   .mega-menu.open {
-    display:flex;
-  }
-  .site-nav {
-    flex-direction:column;
+    display: flex;
   }
 }
