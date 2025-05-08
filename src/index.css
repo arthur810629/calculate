@@ -1,0 +1,170 @@
+/* src/index.css */
+
+/* 1. Global reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* 2. Base styles */
+html,
+body,
+#root {
+  height: 100%;
+  overflow-x: hidden;    /* убираем горизонтальную прокрутку */
+}
+body {
+  font-family: sans-serif;
+  background-color: #fff;
+  color: #222;
+}
+
+/* 3. Flex-верстка корневого контейнера приложения */
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* 4. Skip-link для перехода к содержимому */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #000;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  z-index: 1001;
+  transition: top 0.3s ease;
+}
+.skip-link:focus {
+  top: 0;
+}
+
+/* 5. Шапка сайта */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #f5f5f5;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+.site-header .container {
+  display: flex;
+  align-items: center;
+  height: 60px;
+}
+.logo {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #333;
+  text-decoration: none;
+}
+.menu-toggle {
+  margin-left: auto;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: none; /* появится на мобилках */
+}
+
+/* 6. Основное меню */
+.site-nav {
+  margin-left: 2rem;
+  display: flex;
+  gap: 2rem;
+}
+.site-nav a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  padding: 0.5rem 0;
+}
+.site-nav a[aria-current="page"] {
+  text-decoration: underline;
+}
+
+/* 7. Основной контент между шапкой и подвалом */
+.main-content {
+  flex: 1;
+  margin-top: 90px;    /* высота шапки */
+  margin-bottom: 50px; /* высота подвала */
+  overflow-y: auto;    /* вертикальная прокрутка внутри main */
+  overflow-x: hidden;
+}
+
+/* 8. Контейнер для центрирования контента */
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* 9. Подвал сайта */
+.site-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #f5f5f5;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+.site-footer .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.75rem 0;
+}
+.footer-nav {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+.footer-nav a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+.site-footer p {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* 10. Адаптивность */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+  .site-nav {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background: #f5f5f5;
+    flex-direction: column;
+    align-items: center;
+    display: none;
+    gap: 1rem;
+    padding: 1rem 0;
+  }
+  .site-nav.open {
+    display: flex;
+  }
+}
+
+@media (max-width: 600px) {
+  input,
+  select,
+  button,
+  .home__link {
+    width: 100%;
+    font-size: 1rem;
+  }
+}
