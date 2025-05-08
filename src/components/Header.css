@@ -1,59 +1,48 @@
 .site-header {
   position: sticky;
   top: 0;
-  background-color: #fff;
+  background: #fff;
   border-bottom: 1px solid #e0e0e0;
   z-index: 1000;
 }
-
 .header-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0.75rem 1rem;
 }
-
-.logo a {
-  color: #333;
+.logo {
   font-size: 1.25rem;
   font-weight: bold;
+  color: #333;
   text-decoration: none;
 }
+.logo:hover { text-decoration: none; }
 
 .site-nav {
   position: relative;
-  display: flex;
-  align-items: center;
 }
-
-.nav-link.btn-mega-toggle {
+.btn-mega-toggle {
   display: flex;
   align-items: center;
   gap: 0.25rem;
   background: none;
   border: none;
+  cursor: pointer;
   font: inherit;
   color: #333;
-  cursor: pointer;
   padding: 0.5rem;
-  font-weight: 500;
 }
-
-.nav-link.btn-mega-toggle:hover,
-.nav-link.btn-mega-toggle:focus {
-  background-color: #f5f5f5;
+.btn-mega-toggle:hover {
+  background: #f5f5f5;
   border-radius: 4px;
 }
 
-.mega-parent {
-  position: relative;
-}
-
-/* Важное: приклеиваем правый край мегаменю к правой границе кнопки */
+.mega-parent { position: relative; }
 .mega-menu {
   position: absolute;
   top: 100%;
-  right: 0;      /* вместо left:0 */
+  right: 0;
   width: 760px;
   background: #fff;
   display: flex;
@@ -67,7 +56,6 @@
   pointer-events: none;
   border-radius: 4px;
 }
-
 .mega-menu.open {
   visibility: visible;
   opacity: 1;
@@ -81,27 +69,24 @@
   flex-direction: column;
   gap: 0.5rem;
 }
-
 .mega-section h4 {
+  margin: 0 0 0.5rem;
   font-size: 0.875rem;
-  margin-bottom: 0.5rem;
   color: #555;
   text-transform: uppercase;
 }
-
 .mega-link {
   font-size: 0.875rem;
   color: #007bff;
   text-decoration: none;
   padding: 0.25rem 0;
 }
-
 .mega-link:hover {
   text-decoration: underline;
 }
 
-/* Адаптив */
-@media(max-width: 900px) {
+/* Mobile */
+@media(max-width:900px) {
   .mega-menu {
     position: static;
     width: auto;
@@ -113,7 +98,5 @@
     pointer-events: auto;
     display: none;
   }
-  .mega-menu.open {
-    display: flex;
-  }
+  .mega-menu.open { display: flex; }
 }

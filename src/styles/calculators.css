@@ -166,3 +166,11 @@
     margin-right: 0.5rem;
     color: #555;
   }
+
+  .calculator-page h1 svg {
+  color: #FFC107;
+}
+
+.calc-card svg {
+  color: #FFC107;
+}
