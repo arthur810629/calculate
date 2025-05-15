@@ -3,15 +3,20 @@ import { useEffect } from 'react';
 
 export default function AdBanner({ blockId = "R-A-15506473-1" }) {
   useEffect(() => {
-    // когда скрипт загрузится, пушим задачу на рендер рекламы
+    // если загрузчик не подхватился — выходим
+    if (!window.yaContextCb || typeof Ya === 'undefined') return;
+
     window.yaContextCb.push(() => {
-      Ya.Context.AdvManager.render({
-        blockId: blockId,
-        renderTo: `yandex_rtb_${blockId}`
-      });
+      try {
+        Ya.Context.AdvManager.render({
+          blockId,
+          renderTo: `yandex_rtb_${blockId}`
+        });
+      } catch (e) {
+        console.warn('Yandex RTB render failed', e);
+      }
     });
   }, [blockId]);
 
-  // этот div будет заполнен Яндексом
   return <div id={`yandex_rtb_${blockId}`}></div>;
 }

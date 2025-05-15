@@ -1,11 +1,10 @@
 import React from 'react'
-import AdBanner from '../components/AdBanner';
 import { Link, useParams } from 'react-router-dom'
 import {
   FaFlask, FaFemale, FaTachometerAlt, FaCar,
   FaUsers, FaUtensils, FaBookOpen, FaSquareRootAlt,
   FaPiggyBank, FaCalendarDay, FaFileInvoice,
-  FaHeartbeat, FaGavel, FaChartLine, FaCog, FaCodeBranch
+  FaHeartbeat, FaGavel, FaChartLine, FaCodeBranch
 } from 'react-icons/fa'
 import '../styles/calculators.css'
 
@@ -72,13 +71,13 @@ const CATEGORIES = {
     title: 'Математика',
     icon: <FaSquareRootAlt />,
     items: [
-      { id: 'percent',         title: 'Проценты' },
-      { id: 'equations',       title: 'Уравнения' },
-      { id: 'decimal',         title: 'Десятичные числа' },
-      { id: 'long-division',   title: 'Деление в столбик' },
+      { id: 'percent',           title: 'Проценты' },
+      { id: 'equations',         title: 'Уравнения' },
+      { id: 'decimal',           title: 'Десятичные числа' },
+      { id: 'long-division',     title: 'Деление в столбик' },
       { id: 'decimal-fractions', title: 'Десятичные дроби' },
-      { id: 'gcd-lcm',         title: 'НОД и НОК' },
-      { id: 'matrix',          title: 'Матрицы' }
+      { id: 'gcd-lcm',           title: 'НОД и НОК' },
+      { id: 'matrix',            title: 'Матрицы' }
     ]
   },
   finance: {
@@ -100,9 +99,9 @@ const CATEGORIES = {
     title: 'Калькуляторы дней',
     icon: <FaCalendarDay />,
     items: [
-      { id: 'date-diff',   title: 'Дни между датами' },
-      { id: 'vacation-pay',title: 'Отпускные' },
-      { id: 'years-online',title: 'Расчет лет онлайн' }
+      { id: 'date-diff',    title: 'Дни между датами' },
+      { id: 'vacation-pay', title: 'Отпускные' },
+      { id: 'years-online', title: 'Расчет лет онлайн' }
     ]
   },
   accounting: {
@@ -141,10 +140,10 @@ const CATEGORIES = {
     title: 'Строительство',
     icon: <FaCodeBranch />,
     items: [
-      { id: 'metal',    title: 'Калькулятор металла' },
-      { id: 'meters',   title: 'Калькулятор метров' },
-      { id: 'house',    title: 'Калькулятор дома' },
-      { id: 'angle',    title: 'Калькулятор углов' }
+      { id: 'metal',  title: 'Калькулятор металла' },
+      { id: 'meters', title: 'Калькулятор метров' },
+      { id: 'house',  title: 'Калькулятор дома' },
+      { id: 'angle',  title: 'Калькулятор углов' }
     ]
   }
 }
@@ -154,7 +153,11 @@ export default function CategoryPage() {
   const category = CATEGORIES[categoryId]
 
   if (!category) {
-    return <div className="calculator-page container"><h1>Категория не найдена</h1></div>
+    return (
+      <div className="calculator-page container">
+        <h1>Категория не найдена</h1>
+      </div>
+    )
   }
 
   return (
@@ -163,12 +166,14 @@ export default function CategoryPage() {
         <Link to="/">Главная</Link> › <span>{category.title}</span>
       </nav>
 
-      <h1>{category.icon}&nbsp;{category.title}</h1>
+      <h1>
+        {category.icon}&nbsp;{category.title}
+      </h1>
 
       <div className="calculator-layout">
         <section className="calculator-form">
           <div className="category-grid">
-            {category.items.map(({id, title}) => (
+            {category.items.map(({ id, title }) => (
               <Link
                 key={id}
                 to={`/calculator/${categoryId}/${id}`}
@@ -180,16 +185,14 @@ export default function CategoryPage() {
           </div>
         </section>
 
-        
-<aside className="calculator-ads">
-  <AdBanner blockId="R-A-15506473-1" />
-</aside>
+        <aside className="calculator-ads">
+          <div className="ad-placeholder">Реклама</div>
+        </aside>
       </div>
 
-      
-<aside className="calculator-ads">
-  <AdBanner blockId="R-A-15506473-1" />
-</aside>
+      <div className="bottom-ads">
+        <div className="ad-placeholder">Реклама внизу</div>
+      </div>
     </div>
   )
 }

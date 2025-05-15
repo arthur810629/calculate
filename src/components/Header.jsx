@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { FaThLarge } from 'react-icons/fa'
-import './Header.css'
+import '../styles/Header.css'
+
 
 export default function Header() {
   const [megaOpen, setMegaOpen] = useState(false)

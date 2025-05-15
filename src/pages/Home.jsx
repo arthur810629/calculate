@@ -6,7 +6,8 @@ import {
   FaPiggyBank, FaCalendarDay, FaFileInvoice,
   FaHeartbeat, FaGavel, FaChartLine
 } from 'react-icons/fa'
-import './Home.css'
+import '../styles/Home.css'
+
 
 const HOME_CATEGORIES = [
   { to: '/category/analysis',        icon: <FaFlask size={32}/>,         title: 'Расшифровка анализов' },
