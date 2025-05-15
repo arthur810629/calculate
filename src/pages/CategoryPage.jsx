@@ -1,5 +1,8 @@
+// src/pages/CategoryPage.jsx
+
 import React from 'react'
 import { Link, useParams } from 'react-router-dom'
+import AdBanner from '../components/AdBanner'
 import {
   FaFlask, FaFemale, FaTachometerAlt, FaCar,
   FaUsers, FaUtensils, FaBookOpen, FaSquareRootAlt,
@@ -186,12 +189,12 @@ export default function CategoryPage() {
         </section>
 
         <aside className="calculator-ads">
-          <div className="ad-placeholder">Реклама</div>
+          <AdBanner blockId="R-A-15506473-1" />
         </aside>
       </div>
 
       <div className="bottom-ads">
-        <div className="ad-placeholder">Реклама внизу</div>
+        <AdBanner blockId="R-A-15506473-1" />
       </div>
     </div>
   )
