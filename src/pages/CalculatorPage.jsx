@@ -1,15 +1,13 @@
-// src/pages/CalculatorPage.jsx
-
 import React, { Suspense, lazy } from 'react'
 import { useParams } from 'react-router-dom'
+import AdBanner from '../components/AdBanner'
+import '../styles/calculators.css'
 
-// Сканируем ВСЕ .jsx внутри src/calculator
+// Динамический импорт всех калькуляторов
 const modules = import.meta.glob('../calculator/**/*.jsx')
 
 export default function CalculatorPage() {
   const { categoryId, calculatorId } = useParams()
-
-  // Формируем путь до нужного калькулятора
   const modulePath = `../calculator/${categoryId}/${calculatorId}.jsx`
   const importer = modules[modulePath]
 
@@ -22,12 +20,32 @@ export default function CalculatorPage() {
     )
   }
 
-  // Загружаем компонент лениво
   const Calculator = lazy(importer)
 
   return (
-    <Suspense fallback={<div className="container"><p>Загрузка…</p></div>}>
-      <Calculator /> {/* ✅ ВАЖНО: используем как JSX-компонент */}
-    </Suspense>
+    <div className="calculator-page container">
+      <div className="calculator-layout">
+        {/* Сам калькулятор */}
+        <section className="calculator-form">
+          <Suspense fallback={<div className="container"><p>Загрузка…</p></div>}>
+            <Calculator />
+          </Suspense>
+        </section>
+
+        {/* Реклама в сайдбаре */}
+        <aside className="calculator-ads">
+          <div className="ad-placeholder">
+            <AdBanner blockId="R-A-15506473-1" />
+          </div>
+        </aside>
+      </div>
+
+      {/* Нижний баннер */}
+      <div className="bottom-ads">
+        <div className="ad-placeholder">
+          <AdBanner blockId="R-A-15506473-1" />
+        </div>
+      </div>
+    </div>
   )
 }

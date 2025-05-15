@@ -11,8 +11,7 @@ import CalculatorPage from './pages/CalculatorPage'
 export default function App() {
   return (
     <>
-      {/* Реклама сразу под тегом <body>, перед шапкой */}
-      <AdBanner blockId="R-A-15506473-1" />
+      
 
       <Header />
 

@@ -42,14 +42,9 @@ export default function DepositCalculator() {
           <button className="btn-calc" onClick={calculate}>РАССЧИТАТЬ</button>
           {result && <div className="result">Итоговая сумма: <strong>{result} ₽</strong></div>}
         </section>
-        <aside className="calculator-ads">
-          <div className="ad-placeholder">Реклама 1</div>
-          <div className="ad-placeholder">Реклама 2</div>
-        </aside>
+     
       </div>
-      <div className="bottom-ads">
-        <div className="ad-placeholder">Реклама внизу страницы</div>
-      </div>
+      
     </div>
   )
 }

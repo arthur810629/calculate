@@ -77,15 +77,10 @@ export default function PrepaymentCalculator() {
           )}
         </section>
 
-        <aside className="calculator-ads">
-          <div className="ad-placeholder">Реклама 1</div>
-          <div className="ad-placeholder">Реклама 2</div>
-        </aside>
+    
       </div>
 
-      <div className="bottom-ads">
-        <div className="ad-placeholder">Реклама внизу страницы</div>
-      </div>
+   
     </div>
   )
 }
